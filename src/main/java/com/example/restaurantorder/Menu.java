@@ -12,6 +12,7 @@ import java.util.Scanner;
 import static java.lang.System.exit;
 
 public class Menu {
+
     private ArrayList<Item> starters = new ArrayList<>();
     private ArrayList<Item> mainDishes = new ArrayList<>();
     private ArrayList<Item> lastDishes = new ArrayList<>();
@@ -25,22 +26,7 @@ public class Menu {
                 String type = input.nextLine();
                 double price = Double.parseDouble(input.nextLine());
                 Item item = new Item(description, type, price, 0);
-                switch (type) {
-                    case "Starter":
-                        starters.add(item);
-                        break;
-                    case "Main Dish":
-                        mainDishes.add(item);
-                        break;
-                    case "Last Dish":
-                        lastDishes.add(item);
-                        break;
-                    case "Drink":
-                        drinks.add(item);
-                        break;
-                    default:
-                        input.close();
-                }
+                matchingItemToType(input, item, type);
             }
             input.close();
         } catch (FileNotFoundException e) {
@@ -64,6 +50,26 @@ public class Menu {
 
     public ArrayList<Item> getDrinks() {
         return drinks;
+    }
+
+    private void matchingItemToType(Scanner input, Item item, String type) {
+        switch (type) {
+            case "Starter":
+                starters.add(item);
+                break;
+            case "Main Dish":
+                mainDishes.add(item);
+                break;
+            case "Last Dish":
+                lastDishes.add(item);
+                break;
+            case "Drink":
+                drinks.add(item);
+                break;
+            default:
+                input.close();
+                invalidMenu("Invalid type: " + type);
+        }
     }
 
     private void invalidMenu(String errorMessage) {
