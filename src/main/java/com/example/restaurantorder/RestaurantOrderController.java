@@ -34,5 +34,7 @@ public class RestaurantOrderController {
         type = new ArrayList<TextField>();
         description = new ArrayList<TextField>();
         price = new ArrayList<TextField>();
+        Menu menu = new Menu("menu.txt");
+
     }
 }
