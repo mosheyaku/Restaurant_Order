@@ -1,0 +1,41 @@
+Eggs Benedict
+Main Dish
+74.00
+Salad
+Starter
+40.50
+Pizza Margarita
+Main Dish
+55.90
+Sweet Potato Pancakes
+Starter
+32.40
+Cola
+Drink
+10.00
+Cheesecake
+Last Dish
+30.00
+Home Bread
+Starter
+20.00
+Tomato Pasta
+Main Dish
+80.10
+Fish & Chips
+Main Dish
+70.00
+Coffee
+Drink
+15.20
+Cold Tea
+Drink
+7.50
+Soufflé
+Last Dish
+34.90
+
+
+
+
+
