@@ -1,9 +1,15 @@
 package com.example.restaurantorder;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Scanner;
+
+import static java.lang.System.exit;
 
 public class Menu {
     private ArrayList<Item> starters = new ArrayList<>();
@@ -38,7 +44,9 @@ public class Menu {
             }
             input.close();
         } catch (FileNotFoundException e) {
+            invalidMenu("Error: file not found");
         } catch (NumberFormatException e) {
+            invalidMenu("Error: invalid format in file");
         }
     }
 
@@ -56,5 +64,14 @@ public class Menu {
 
     public ArrayList<Item> getDrinks() {
         return drinks;
+    }
+
+    private void invalidMenu(String errorMessage) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Invalid Menu:");
+        alert.setContentText(errorMessage);
+        Optional<ButtonType> option = alert.showAndWait();
+        exit(0);
     }
 }
