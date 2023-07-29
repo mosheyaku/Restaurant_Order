@@ -2,6 +2,7 @@ package com.example.restaurantorder;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -28,6 +29,8 @@ public class RestaurantOrderController {
     private int i = 0;
     private int j = 0;
     private final int MAX_Item_Choice = 10;
+
+    private final int CHECKBOX_LOCATION = 3;
 
     public void initialize() {
         initializeItemComponents();
@@ -124,6 +127,23 @@ public class RestaurantOrderController {
     @FXML
     public void orderPressed(ActionEvent actionEvent) {
         Order order = new Order();
+        int equalisation = 0;
+        for (Node child : grid.getChildren()) {
+            if (GridPane.getColumnIndex(child) == CHECKBOX_LOCATION && (child instanceof CheckBox)) {
+                addSelectedItemsToOrder(order, child, equalisation);
+            } else if (GridPane.getColumnIndex(child) == 0 && (child instanceof Label)) {
+                equalisation++;
+            }
+        }
+    }
+
+    private void addSelectedItemsToOrder(Order order, Node child, int equalisation) {
+        if (((CheckBox) child).isSelected()) {
+            int rowIndex = GridPane.getRowIndex(child);
+            int currentIndex = rowIndex - equalisation;
+            order.addItem(new Item(description.get(currentIndex).getText(), type.get(currentIndex).getText(),
+                    Double.parseDouble(price.get(currentIndex).getText()), Integer.parseInt(quantity.get(currentIndex).getValue().toString())));
+        }
     }
 
 }
