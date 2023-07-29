@@ -11,8 +11,8 @@ public class RestaurantOrder extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RestaurantOrder.class.getResource("restaurant-order.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Menu");
+        Scene scene = new Scene(fxmlLoader.load(), 550, 580);
+        stage.setTitle("Restaurant Order");
         stage.setScene(scene);
         stage.show();
     }
