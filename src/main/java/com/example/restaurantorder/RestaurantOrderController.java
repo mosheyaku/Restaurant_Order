@@ -35,16 +35,20 @@ public class RestaurantOrderController {
     }
 
     public void initialize() {
-        select = new ArrayList<CheckBox>();
-        quantity = new ArrayList<ComboBox>();
-        type = new ArrayList<TextField>();
-        description = new ArrayList<TextField>();
-        price = new ArrayList<TextField>();
+        initializeItemComponents();
         Menu menu = new Menu("menu.txt");
         insertHeadingsToMenu();
         Label itemType[] = new Label[]{new Label("Starter"), new Label("Main Dish"), new Label("Last Dish"), new Label("Drink")};
         dishNameDesign(itemType);
         insertItemsByTypeToMenu(menu, itemType);
+    }
+
+    private void initializeItemComponents() {
+        select = new ArrayList<CheckBox>();
+        quantity = new ArrayList<ComboBox>();
+        type = new ArrayList<TextField>();
+        description = new ArrayList<TextField>();
+        price = new ArrayList<TextField>();
     }
 
     private void insertHeadingsToMenu() {
