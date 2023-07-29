@@ -29,11 +29,6 @@ public class RestaurantOrderController {
     private int j = 0;
     private final int MAX_Item_Choice = 10;
 
-
-    @FXML
-    public void orderPressed(ActionEvent actionEvent) {
-    }
-
     public void initialize() {
         initializeItemComponents();
         Menu menu = new Menu("menu.txt");
@@ -124,6 +119,11 @@ public class RestaurantOrderController {
             quantity.get(j).getItems().add(m + "");
             quantity.get(j).setValue("1");
         }
+    }
+
+    @FXML
+    public void orderPressed(ActionEvent actionEvent) {
+        Order order = new Order();
     }
 
 }
